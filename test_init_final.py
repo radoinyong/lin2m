@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-################ Server Ver. 26 (2021. 1. 27.) #####################
+################ Server Ver. 27 (2021. 2. 17.) #####################
 
 import sys, os, ctypes
 import asyncio, discord, aiohttp
@@ -1058,6 +1058,10 @@ class taskCog(commands.Cog):
 
 				################ 고정 보스 확인 ################ 
 				for i in range(fixed_bossNum):
+					if int(basicSetting[3]) == 0:
+						fixed_bossFlag0[i] = True
+					if int(basicSetting[1]) == 0:
+						fixed_bossFlag[i] = True
 					################ before_alert1 ################ 
 					if fixed_bossTime[i] <= priv0 and fixed_bossTime[i] > priv:
 						if basicSetting[3] != '0':
@@ -1100,6 +1104,10 @@ class taskCog(commands.Cog):
 
 				################ 일반 보스 확인 ################ 
 				for i in range(bossNum):
+					if int(basicSetting[3]) == 0:
+						bossFlag0[i] = True
+					if int(basicSetting[1]) == 0:
+						bossFlag[i] = True
 					################ before_alert1 ################ 
 					if bossTime[i] <= priv0 and bossTime[i] > priv:
 						if basicSetting[3] != '0':
@@ -1450,7 +1458,7 @@ class mainCog(commands.Cog):
 	async def setting_(self, ctx):	
 		#print (ctx.message.channel.id)
 		if ctx.message.channel.id == basicSetting[7]:
-			setting_val = '보탐봇버전 : Server Ver. 26 (2021. 1. 27.)\n'
+			setting_val = '보탐봇버전 : Server Ver. 27 (2021. 2. 17.)\n'
 			if basicSetting[6] != "" :
 				setting_val += '음성채널 : ' + self.bot.get_channel(basicSetting[6]).name + '\n'
 			setting_val += '텍스트채널 : ' + self.bot.get_channel(basicSetting[7]).name +'\n'
